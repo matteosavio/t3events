@@ -188,6 +188,9 @@ class PerformanceController
      */
     public function showAction(Performance $performance)
     {
+        $this->objectManager->get(\TYPO3\CMS\Core\Page\PageRenderer::class)->setTitle($performance->getEvent()->getHeadline() . $originalTitle);
+        $GLOBALS['TSFE']->indexedDocTitle = $performance->getEvent()->getHeadline();
+
         $templateVariables = [
             'settings' => $this->settings,
             'performance' => $performance
